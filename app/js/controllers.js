@@ -6,8 +6,10 @@ angular.module('myApp.controllers', [])
   .controller('LandingPageController', [function() {
 
   }])
-  .controller('WaitlistController', [function() {
-    this.parties = [];
+  .controller('WaitlistController', ['$firebaseArray', function($firebaseArray) {
+    var partiesReference = new Firebase('https://gz-angularfire-test.firebaseio.com/');
+
+    this.parties = $firebaseArray(partiesReference);
 
     this.party = {
       name: '',
@@ -16,7 +18,7 @@ angular.module('myApp.controllers', [])
     };
 
     this.saveParty = function() {
-      this.parties.push(this.party);
+      this.parties.$add(this.party);
       this.party = {};
     };
   }]);
