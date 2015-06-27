@@ -25,11 +25,13 @@ angular.module('myApp.controllers', [])
     };
 
     // Function to send a text message to a party.
-    this.sendTextMessage = function(phoneNumber) {
+    this.sendTextMessage = function(party) {
       var textMessagesReference = new Firebase('https://gz-angularfire-test.firebaseio.com/textMessages');
       var textMessages = $firebaseArray(textMessagesReference);
       textMessages.$add({
-        phoneNumber: phoneNumber
+        phoneNumber: party.phone,
+        size: party.size,
+        name: party.name
       });
     };
   }]);
