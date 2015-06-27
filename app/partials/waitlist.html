@@ -1,4 +1,4 @@
-<form ng-submit="waitlist.saveParty()" class="form-inline" role="form">
+<form ng-submit="waitlist.saveParty()" class="form-inline party-form" role="form">
   <div class="form-group">
     <input ng-model="waitlist.party.name" type="text" class="form-control" placeholder="Name">
   </div>
@@ -11,6 +11,30 @@
   <button type="submit" class="btn btn-primary">Add party</button>
 </form>
 
-{{ waitlist.party }}
-<br>
-{{ waitlist.parties }}
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Done?</th>
+    <th>Info</th>
+    <th>Notified?</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tr ng-repeat="party in waitlist.parties">
+    <td>
+      <input type="checkbox">
+    </td>
+    <td>
+      <div><strong>{{ party.name }} ({{ party.size }} people)</strong></div>
+      <div>{{ party.phone }}</div>
+      <div><!--TODO: Add date created.--></div>
+    </td>
+    <td>
+      <div><!--TODO: Add party.notified.--></div>
+    </td>
+    <td>
+      <button type="submit" class="btn btn-success">Send SMS</button>
+      <button type="submit" class="btn btn-danger">Remove</button>
+    </td>
+  </tr>
+</table>
