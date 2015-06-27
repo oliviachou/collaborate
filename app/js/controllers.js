@@ -11,14 +11,14 @@ angular.module('myApp.controllers', [])
 
     this.parties = $firebaseArray(partiesReference);
 
-    this.party = {
+    this.newParty = {
       name: '',
       phone: '',
       size: ''
     };
 
     this.saveParty = function() {
-      this.parties.$add(this.party);
-      this.party = {};
+      this.parties.$add(this.newParty);
+      this.newParty = {};
     };
   }]);

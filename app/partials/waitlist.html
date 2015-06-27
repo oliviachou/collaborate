@@ -1,12 +1,12 @@
 <form ng-submit="waitlist.saveParty()" class="form-inline party-form" role="form">
   <div class="form-group">
-    <input ng-model="waitlist.party.name" type="text" class="form-control" placeholder="Name">
+    <input ng-model="waitlist.newParty.name" type="text" class="form-control" placeholder="Name">
   </div>
   <div class="form-group">
-    <input ng-model="waitlist.party.phone" type="text" class="form-control" placeholder="Phone">
+    <input ng-model="waitlist.newParty.phone" type="text" class="form-control" placeholder="Phone">
   </div>
   <div class="form-group">
-    <input ng-model="waitlist.party.size" type="text" class="form-control" placeholder="Size of party">
+    <input ng-model="waitlist.newParty.size" type="text" class="form-control" placeholder="Size of party">
   </div>
   <button type="submit" class="btn btn-primary">Add party</button>
 </form>
@@ -34,7 +34,7 @@
     </td>
     <td>
       <button type="submit" class="btn btn-success">Send SMS</button>
-      <button type="submit" class="btn btn-danger">Remove</button>
+      <button ng-click="waitlist.parties.$remove(party)" type="submit" class="btn btn-danger">Remove</button>
     </td>
   </tr>
 </table>
