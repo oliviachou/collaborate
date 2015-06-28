@@ -72,4 +72,8 @@ angular.module('myApp.controllers', [])
           console.log(error);
         });
     };
+
+    authController.logout = function() {
+      firebaseAuthObject.$unauth();
+    };
   }]);
