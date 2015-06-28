@@ -22,7 +22,7 @@
   </thead>
   <tr ng-repeat="party in waitlist.parties">
     <td>
-      <input type="checkbox">
+      <input ng-model="party.done" ng-change="waitlist.parties.$save(party)" type="checkbox">
     </td>
     <td>
       <div><strong>{{ party.name }} ({{ party.size }} people)</strong></div>
