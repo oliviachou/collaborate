@@ -6,12 +6,12 @@ angular.module('myApp.controllers', [])
   .controller('LandingPageController', [function() {
 
   }])
-  .controller('WaitlistController', ['$firebaseArray', function($firebaseArray) {
+  .controller('WaitlistController', ['$firebaseArray', 'FIREBASE_URL', function($firebaseArray, FIREBASE_URL) {
     // Keep a reference to the controller instance.
     var waitListController = this;
 
     // Connect parties to Firebase.
-    var partiesReference = new Firebase('https://gz-angularfire-test.firebaseio.com/parties');
+    var partiesReference = new Firebase(FIREBASE_URL+ 'parties');
     waitListController.parties = $firebaseArray(partiesReference);
 
     // Object to store data from the waitlist form.
@@ -31,7 +31,7 @@ angular.module('myApp.controllers', [])
 
     // Function to send a text message to a party.
     waitListController.sendTextMessage = function(party) {
-      var textMessagesReference = new Firebase('https://gz-angularfire-test.firebaseio.com/textMessages');
+      var textMessagesReference = new Firebase(FIREBASE_URL + 'textMessages');
       var textMessages = $firebaseArray(textMessagesReference);
       var nexTextMessage = {
         phoneNumber: party.phone,
@@ -43,10 +43,10 @@ angular.module('myApp.controllers', [])
       waitListController.parties.$save(party);
     };
   }])
-  .controller('AuthController', ['$firebaseAuth', '$location', function($firebaseAuth, $location) {
+  .controller('AuthController', ['$firebaseAuth', '$location', 'FIREBASE_URL', function($firebaseAuth, $location, FIREBASE_URL) {
     var authController = this;
 
-    var authReference = new Firebase('https://gz-angularfire-test.firebaseio.com/parties');
+    var authReference = new Firebase(FIREBASE_URL + 'parties');
     var firebaseAuthObject = $firebaseAuth(authReference);
 
     authController.user = {
