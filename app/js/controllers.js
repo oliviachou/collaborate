@@ -43,7 +43,7 @@ angular.module('myApp.controllers', [])
       waitListController.parties.$save(party);
     };
   }])
-  .controller('AuthController', ['$firebaseAuth', function($firebaseAuth) {
+  .controller('AuthController', ['$firebaseAuth', '$location', function($firebaseAuth, $location) {
     var authController = this;
 
     var authReference = new Firebase('https://gz-angularfire-test.firebaseio.com/parties');
@@ -68,6 +68,7 @@ angular.module('myApp.controllers', [])
       firebaseAuthObject.$authWithPassword(authController.user)
         .then(function(loggedInUser) {
           console.log(loggedInUser);
+          $location.path('/waitlist');
         }, function(error) {
           console.log(error);
         });
@@ -75,5 +76,6 @@ angular.module('myApp.controllers', [])
 
     authController.logout = function() {
       firebaseAuthObject.$unauth();
+      $location.path('/');
     };
   }]);
