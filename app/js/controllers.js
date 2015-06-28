@@ -42,4 +42,29 @@ angular.module('myApp.controllers', [])
       party.notified = true;
       waitListController.parties.$save(party);
     };
+  }])
+  .controller('AuthController', ['$firebaseAuth', function($firebaseAuth) {
+    var authController = this;
+
+    var authReference = new Firebase('https://gz-angularfire-test.firebaseio.com/parties');
+    var firebaseAuthObject = $firebaseAuth(authReference);
+
+    authController.user = {
+      email: '',
+      password: ''
+    };
+
+    authController.register = function() {
+      firebaseAuthObject.$createUser(authController.user)
+        .then(function(newUser) {
+          console.log(newUser);
+          return firebaseAuthObject.$authWithPassword(authController.user);
+        })
+        .then(function(authData) {
+          console.log(authData);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    };
   }]);

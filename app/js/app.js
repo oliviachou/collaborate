@@ -20,6 +20,11 @@ angular.module('myApp', [
       controller: 'WaitlistController',
       controllerAs: 'waitlistController'
     });
+    $routeProvider.when('/register', {
+      templateUrl: 'partials/register.html',
+      controller: 'AuthController',
+      controllerAs: 'authController'
+    });
     $routeProvider.otherwise({
       redirectTo: '/'
     });
