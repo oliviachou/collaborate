@@ -16,28 +16,27 @@ angular.module('myApp.controllers', [])
       name: '',
       phone: '',
       size: '',
-      done: false
+      done: false,
+      notified: false
     };
 
     // Function to save a new party to the waitlist.
     this.saveParty = function() {
       this.parties.$add(this.newParty);
-      this.newParty = {
-        name: '',
-        phone: '',
-        size: '',
-        done: false
-      };
+      this.newParty = {};
     };
 
     // Function to send a text message to a party.
     this.sendTextMessage = function(party) {
       var textMessagesReference = new Firebase('https://gz-angularfire-test.firebaseio.com/textMessages');
       var textMessages = $firebaseArray(textMessagesReference);
-      textMessages.$add({
+      var nexTextMessage = {
         phoneNumber: party.phone,
         size: party.size,
         name: party.name
-      });
+      };
+      textMessages.$add(nexTextMessage);
+      party.notified = true;
+      this.parties.$save(party);
     };
   }]);

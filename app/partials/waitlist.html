@@ -30,7 +30,7 @@
       <div><!--TODO: Add date created.--></div>
     </td>
     <td>
-      <div><!--TODO: Add party.notified.--></div>
+      <div>{{ party.notified ? 'Yes' : 'No' }}</div>
     </td>
     <td>
       <button ng-click="waitlist.sendTextMessage(party)" type="submit" class="btn btn-success">Send SMS</button>
