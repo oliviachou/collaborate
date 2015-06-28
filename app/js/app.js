@@ -25,6 +25,11 @@ angular.module('myApp', [
       controller: 'AuthController',
       controllerAs: 'authController'
     });
+    $routeProvider.when('/login', {
+      templateUrl: 'partials/login.html',
+      controller: 'AuthController',
+      controllerAs: 'authController'
+    });
     $routeProvider.otherwise({
       redirectTo: '/'
     });

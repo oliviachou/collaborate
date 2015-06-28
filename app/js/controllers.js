@@ -58,12 +58,17 @@ angular.module('myApp.controllers', [])
       firebaseAuthObject.$createUser(authController.user)
         .then(function(newUser) {
           console.log(newUser);
-          return firebaseAuthObject.$authWithPassword(authController.user);
-        })
-        .then(function(authData) {
-          console.log(authData);
-        })
-        .catch(function(error) {
+          authController.login();
+        }, function(error) {
+          console.log(error);
+        });
+    };
+
+    authController.login = function() {
+      firebaseAuthObject.$authWithPassword(authController.user)
+        .then(function(loggedInUser) {
+          console.log(loggedInUser);
+        }, function(error) {
           console.log(error);
         });
     };
