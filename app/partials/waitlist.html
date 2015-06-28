@@ -1,12 +1,12 @@
-<form ng-submit="waitlist.saveParty()" class="form-inline party-form" role="form">
+<form ng-submit="waitlistController.saveParty()" class="form-inline party-form" role="form">
   <div class="form-group">
-    <input ng-model="waitlist.newParty.name" type="text" class="form-control" placeholder="Name">
+    <input ng-model="waitlistController.newParty.name" type="text" class="form-control" placeholder="Name">
   </div>
   <div class="form-group">
-    <input ng-model="waitlist.newParty.phone" type="text" class="form-control" placeholder="Phone">
+    <input ng-model="waitlistController.newParty.phone" type="text" class="form-control" placeholder="Phone">
   </div>
   <div class="form-group">
-    <input ng-model="waitlist.newParty.size" type="text" class="form-control" placeholder="Size of party">
+    <input ng-model="waitlistController.newParty.size" type="text" class="form-control" placeholder="Size of party">
   </div>
   <button type="submit" class="btn btn-primary">Add party</button>
 </form>
@@ -20,9 +20,9 @@
     <th>Actions</th>
   </tr>
   </thead>
-  <tr ng-repeat="party in waitlist.parties">
+  <tr ng-repeat="party in waitlistController.parties">
     <td>
-      <input ng-model="party.done" ng-change="waitlist.parties.$save(party)" type="checkbox">
+      <input ng-model="party.done" ng-change="waitlistController.parties.$save(party)" type="checkbox">
     </td>
     <td>
       <div><strong>{{ party.name }} ({{ party.size }} people)</strong></div>
@@ -33,8 +33,8 @@
       <div>{{ party.notified ? 'Yes' : 'No' }}</div>
     </td>
     <td>
-      <button ng-click="waitlist.sendTextMessage(party)" type="submit" class="btn btn-success">Send SMS</button>
-      <button ng-click="waitlist.parties.$remove(party)" type="submit" class="btn btn-danger">Remove</button>
+      <button ng-click="waitlistController.sendTextMessage(party)" type="submit" class="btn btn-success">Send SMS</button>
+      <button ng-click="waitlistController.parties.$remove(party)" type="submit" class="btn btn-danger">Remove</button>
     </td>
   </tr>
 </table>

@@ -18,7 +18,7 @@ angular.module('myApp', [
     $routeProvider.when('/waitlist', {
       templateUrl: 'partials/waitlist.html',
       controller: 'WaitlistController',
-      controllerAs: 'waitlist'
+      controllerAs: 'waitlistController'
     });
     $routeProvider.otherwise({
       redirectTo: '/'
