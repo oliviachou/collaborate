@@ -43,7 +43,7 @@ angular.module('myApp.controllers', [])
       waitListController.parties.$save(party);
     };
   }])
-  .controller('AuthController', ['$firebaseAuth', '$location', 'FIREBASE_URL', function($firebaseAuth, $location, FIREBASE_URL) {
+  .controller('AuthController', ['$firebaseAuth', '$location', 'FIREBASE_URL', 'authService', function($firebaseAuth, $location, FIREBASE_URL, authService) {
     var authController = this;
 
     var authReference = new Firebase(FIREBASE_URL + 'parties');
@@ -65,9 +65,10 @@ angular.module('myApp.controllers', [])
     };
 
     authController.login = function() {
-      firebaseAuthObject.$authWithPassword(authController.user)
-        .then(function(loggedInUser) {
-          console.log(loggedInUser);
+
+      authService.login(authController.user)
+        .then(function(user) {
+          console.log(user);
           $location.path('/waitlist');
         }, function(error) {
           console.log(error);
