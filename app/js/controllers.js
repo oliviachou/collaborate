@@ -75,4 +75,5 @@ angular.module('myApp.controllers', [])
       authService.logout();
       $location.path('/');
     };
+
   }]);
