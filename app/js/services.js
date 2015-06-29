@@ -7,9 +7,14 @@
 // In this case it is a simple value service.
 angular.module('myApp.services', [])
   .value('FIREBASE_URL', 'https://gz-angularfire-test.firebaseio.com/')
-  .factory('partyService', ['$firebaseArray', 'FIREBASE_URL', function($firebaseArray, FIREBASE_URL) {
-    var partiesReference = new Firebase(FIREBASE_URL + 'parties');
-    var parties = $firebaseArray(partiesReference);
+  .factory('dataService', ['FIREBASE_URL', function(FIREBASE_URL) {
+    var dataReference = new Firebase(FIREBASE_URL);
+
+    return dataReference;
+  }])
+  .factory('partyService', ['$firebaseArray', 'FIREBASE_URL', 'dataService',
+    function($firebaseArray, FIREBASE_URL, dataService) {
+    var parties = $firebaseArray(dataService.child('parties'));
 
     var partyServiceObject = {
       parties: parties,
@@ -20,9 +25,9 @@ angular.module('myApp.services', [])
 
     return partyServiceObject;
   }])
-  .factory('authService', ['$rootScope', '$firebaseAuth', 'FIREBASE_URL', function($rootScope, $firebaseAuth, FIREBASE_URL) {
-    var authReference = new Firebase(FIREBASE_URL);
-    var firebaseAuthObject = $firebaseAuth(authReference);
+  .factory('authService', ['$rootScope', '$firebaseAuth', 'FIREBASE_URL', 'dataService',
+    function($rootScope, $firebaseAuth, FIREBASE_URL, dataService) {
+    var firebaseAuthObject = $firebaseAuth(dataService);
 
     firebaseAuthObject.$onAuth(function(currentUser) {
       $rootScope.currentUser = currentUser;
@@ -42,9 +47,9 @@ angular.module('myApp.services', [])
 
     return authServiceObject;
   }])
-  .factory('textMessageService', ['$firebaseArray', 'FIREBASE_URL', 'partyService', function($firebaseArray, FIREBASE_URL, partyService) {
-    var textMessagesReference = new Firebase(FIREBASE_URL + 'textMessages');
-    var textMessages = $firebaseArray(textMessagesReference);
+  .factory('textMessageService', ['$firebaseArray', 'FIREBASE_URL', 'partyService', 'dataService',
+    function($firebaseArray, FIREBASE_URL, partyService, dataService) {
+    var textMessages = $firebaseArray(dataService.child('textMessages'));
 
     var textMessageServiceObject = {
       sendTextMessage: function(party) {
