@@ -8,7 +8,7 @@
 angular.module('myApp.services', [])
   .value('FIREBASE_URL', 'https://gz-angularfire-test.firebaseio.com/')
   .factory('partyService', ['$firebaseArray', 'FIREBASE_URL', function($firebaseArray, FIREBASE_URL) {
-    var partiesReference = new Firebase(FIREBASE_URL);
+    var partiesReference = new Firebase(FIREBASE_URL + 'parties');
     var parties = $firebaseArray(partiesReference);
 
     var partyServiceObject = {
@@ -41,4 +41,23 @@ angular.module('myApp.services', [])
     };
 
     return authServiceObject;
+  }])
+  .factory('textMessageService', ['$firebaseArray', 'FIREBASE_URL', 'partyService', function($firebaseArray, FIREBASE_URL, partyService) {
+    var textMessagesReference = new Firebase(FIREBASE_URL + 'textMessages');
+    var textMessages = $firebaseArray(textMessagesReference);
+
+    var textMessageServiceObject = {
+      sendTextMessage: function(party) {
+        var newTextMessage = {
+          phoneNumber: party.phone,
+          size: party.size,
+          name: party.name
+        };
+        textMessages.$add(newTextMessage);
+        party.notified = true;
+        partyService.parties.$save(party);
+      }
+    };
+
+    return textMessageServiceObject;
   }]);

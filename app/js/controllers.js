@@ -6,7 +6,8 @@ angular.module('myApp.controllers', [])
   .controller('LandingPageController', [function() {
 
   }])
-  .controller('WaitlistController', ['$firebaseArray', 'FIREBASE_URL', 'partyService', function($firebaseArray, FIREBASE_URL, partyService) {
+  .controller('WaitlistController', ['$firebaseArray', 'FIREBASE_URL', 'partyService', 'textMessageService',
+    function($firebaseArray, FIREBASE_URL, partyService, textMessageService) {
     // Keep a reference to the controller instance.
     var waitListController = this;
 
@@ -30,16 +31,7 @@ angular.module('myApp.controllers', [])
 
     // Function to send a text message to a party.
     waitListController.sendTextMessage = function(party) {
-      var textMessagesReference = new Firebase(FIREBASE_URL + 'textMessages');
-      var textMessages = $firebaseArray(textMessagesReference);
-      var nexTextMessage = {
-        phoneNumber: party.phone,
-        size: party.size,
-        name: party.name
-      };
-      textMessages.$add(nexTextMessage);
-      party.notified = true;
-      waitListController.parties.$save(party);
+      textMessageService.sendTextMessage(party);
     };
   }])
   .controller('AuthController', ['$location', 'authService', function($location, authService) {
