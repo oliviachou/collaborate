@@ -43,11 +43,8 @@ angular.module('myApp.controllers', [])
       waitListController.parties.$save(party);
     };
   }])
-  .controller('AuthController', ['$firebaseAuth', '$location', 'FIREBASE_URL', 'authService', function($firebaseAuth, $location, FIREBASE_URL, authService) {
+  .controller('AuthController', ['$location', 'authService', function($location, authService) {
     var authController = this;
-
-    var authReference = new Firebase(FIREBASE_URL + 'parties');
-    var firebaseAuthObject = $firebaseAuth(authReference);
 
     authController.user = {
       email: '',
@@ -55,9 +52,9 @@ angular.module('myApp.controllers', [])
     };
 
     authController.register = function() {
-      firebaseAuthObject.$createUser(authController.user)
-        .then(function(newUser) {
-          console.log(newUser);
+      authService.register(authController.user)
+        .then(function(user) {
+          console.log(user);
           authController.login();
         }, function(error) {
           console.log(error);
@@ -65,7 +62,6 @@ angular.module('myApp.controllers', [])
     };
 
     authController.login = function() {
-
       authService.login(authController.user)
         .then(function(user) {
           console.log(user);
@@ -76,7 +72,7 @@ angular.module('myApp.controllers', [])
     };
 
     authController.logout = function() {
-      firebaseAuthObject.$unauth();
+      authService.logout();
       $location.path('/');
     };
   }]);

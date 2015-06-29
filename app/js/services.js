@@ -11,9 +11,17 @@ angular.module('myApp.services', [])
     var authReference = new Firebase(FIREBASE_URL);
     var firebaseAuthObject = $firebaseAuth(authReference);
 
-    return {
+    var authServiceObject = {
+      register: function(user) {
+        return firebaseAuthObject.$createUser(user);
+      },
       login: function(user) {
         return firebaseAuthObject.$authWithPassword(user);
+      },
+      logout: function() {
+        firebaseAuthObject.$unauth();
       }
     };
+
+    return authServiceObject;
   });
