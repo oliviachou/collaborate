@@ -16,10 +16,12 @@ angular.module('myApp.services', [])
     function($firebaseArray, FIREBASE_URL, dataService) {
     var parties = $firebaseArray(dataService.child('parties'));
 
+
     var partyServiceObject = {
       parties: parties,
-      saveParty: function(party) {
-        parties.$add(party);
+      saveParty: function(party, userid) {
+        var user = $firebaseArray(dataService.child('users').child(userid));
+        user.$add(party);
       }
     };
 
@@ -28,6 +30,8 @@ angular.module('myApp.services', [])
   .factory('authService', ['$rootScope', '$firebaseAuth', 'FIREBASE_URL', 'dataService',
     function($rootScope, $firebaseAuth, FIREBASE_URL, dataService) {
     var firebaseAuthObject = $firebaseAuth(dataService);
+
+    $rootScope.currentUser = null;
 
     firebaseAuthObject.$onAuth(function(currentUser) {
       $rootScope.currentUser = currentUser;
@@ -42,6 +46,9 @@ angular.module('myApp.services', [])
       },
       logout: function() {
         firebaseAuthObject.$unauth();
+      },
+      getCurrentUser: function() {
+        return $rootScope.currentUser.uid;
       }
     };
 
