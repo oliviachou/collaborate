@@ -32,7 +32,7 @@ angular.module('myApp.controllers', [])
 
     // Function to send a text message to a party.
     waitListController.sendTextMessage = function(party) {
-      textMessageService.sendTextMessage(party);
+      textMessageService.sendTextMessage(party, currentUser.uid, waitListController.parties);
     };
   }])
   .controller('AuthController', ['$location', 'authService', function($location, authService) {

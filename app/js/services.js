@@ -62,7 +62,7 @@ angular.module('myApp.services', [])
     var textMessages = $firebaseArray(dataService.child('textMessages'));
 
     var textMessageServiceObject = {
-      sendTextMessage: function(party) {
+      sendTextMessage: function(party, uid, parties) {
         var newTextMessage = {
           phoneNumber: party.phone,
           size: party.size,
@@ -70,7 +70,7 @@ angular.module('myApp.services', [])
         };
         textMessages.$add(newTextMessage);
         party.notified = true;
-        partyService.parties.$save(party);
+        parties.$save(party);
       }
     };
 
