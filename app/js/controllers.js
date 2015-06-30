@@ -13,7 +13,7 @@ angular.module('myApp.controllers', [])
     var waitListController = this;
 
     // Connect parties to Firebase.
-    waitListController.parties = partyService.parties;
+    waitListController.parties = partyService.getPartiesByUser(currentUser.uid);
 
     // Object to store data from the waitlist form.
     waitListController.newParty = {

@@ -18,10 +18,12 @@ angular.module('myApp.services', [])
 
 
     var partyServiceObject = {
-      parties: parties,
-      saveParty: function(party, userid) {
-        var user = $firebaseArray(dataService.child('users').child(userid));
+      saveParty: function(party, uid) {
+        var user = $firebaseArray(dataService.child('users').child(uid));
         user.$add(party);
+      },
+      getPartiesByUser: function(uid) {
+        return  $firebaseArray(dataService.child('users').child(uid));
       }
     };
 
