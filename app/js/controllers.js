@@ -7,8 +7,8 @@ angular.module('myApp.controllers', [])
 
   }])
   .controller('WaitlistController',
-  ['$firebaseArray', 'FIREBASE_URL', 'partyService', 'textMessageService', 'authService',
-    function($firebaseArray, FIREBASE_URL, partyService, textMessageService, authService) {
+  ['$firebaseArray', 'FIREBASE_URL', 'partyService', 'textMessageService', 'authService', 'currentUser',
+    function($firebaseArray, FIREBASE_URL, partyService, textMessageService, authService, currentUser) {
     // Keep a reference to the controller instance.
     var waitListController = this;
 
@@ -26,7 +26,7 @@ angular.module('myApp.controllers', [])
 
     // Function to save a new party to the waitlist.
     waitListController.saveParty = function() {
-      partyService.saveParty(waitListController.newParty, authService.getCurrentUser());
+      partyService.saveParty(waitListController.newParty, currentUser.uid);
       waitListController.newParty = {};
     };
 
@@ -56,7 +56,7 @@ angular.module('myApp.controllers', [])
     authController.login = function() {
       authService.login(authController.user)
         .then(function(user) {
-          console.log(user);
+          console.log('in authController.login', user);
           $location.path('/waitlist');
         }, function(error) {
           console.log(error);

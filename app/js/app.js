@@ -10,7 +10,14 @@ angular.module('myApp', [
   'myApp.controllers',
   'firebase'
 ])
-  .config(['$routeProvider', function($routeProvider) {
+.run(['$rootScope', '$location', function($rootScope, $location) {
+  $rootScope.$on('$routeChangeError', function(event, next, previous, error) {
+    if (error === "AUTH_REQUIRED") {
+      $location.path('/');
+    }
+  });
+}])
+.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
       templateUrl: 'partials/landing_page.html',
       controller: 'LandingPageController'
@@ -18,7 +25,12 @@ angular.module('myApp', [
     $routeProvider.when('/waitlist', {
       templateUrl: 'partials/waitlist.html',
       controller: 'WaitlistController',
-      controllerAs: 'waitlistController'
+      controllerAs: 'waitlistController',
+      resolve: {
+        currentUser: ['$location', 'authService', function($location, authService) {
+          return authService.firebaseAuthObject.$requireAuth();
+        }]
+      }
     });
     $routeProvider.when('/register', {
       templateUrl: 'partials/register.html',

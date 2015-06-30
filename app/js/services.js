@@ -38,6 +38,7 @@ angular.module('myApp.services', [])
     });
 
     var authServiceObject = {
+      firebaseAuthObject: firebaseAuthObject,
       register: function(user) {
         return firebaseAuthObject.$createUser(user);
       },
