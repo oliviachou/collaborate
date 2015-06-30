@@ -46,19 +46,23 @@ angular.module('myApp.controllers', [])
     authController.register = function() {
       authService.register(authController.user)
         .then(function(user) {
-          console.log(user);
-          authController.login();
-        }, function(error) {
+          return authController.login();
+        })
+        .then(function(user) {
+          return authService.sendWelcomeEmail(user.password.email);
+        })
+        .catch(function(error) {
           console.log(error);
         });
     };
 
     authController.login = function() {
-      authService.login(authController.user)
+      return authService.login(authController.user)
         .then(function(user) {
-          console.log('in authController.login', user);
           $location.path('/waitlist');
-        }, function(error) {
+          return user;
+        })
+        .catch(function(error) {
           console.log(error);
         });
     };

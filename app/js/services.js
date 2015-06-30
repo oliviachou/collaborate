@@ -29,9 +29,10 @@ angular.module('myApp.services', [])
 
     return partyServiceObject;
   }])
-  .factory('authService', ['$rootScope', '$firebaseAuth', 'FIREBASE_URL', 'dataService',
-    function($rootScope, $firebaseAuth, FIREBASE_URL, dataService) {
+  .factory('authService', ['$rootScope', '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL', 'dataService',
+    function($rootScope, $firebaseAuth, $firebaseArray, FIREBASE_URL, dataService) {
     var firebaseAuthObject = $firebaseAuth(dataService);
+    var emails = $firebaseArray(dataService.child('emails'));
 
     $rootScope.currentUser = null;
 
@@ -52,6 +53,9 @@ angular.module('myApp.services', [])
       },
       getCurrentUser: function() {
         return $rootScope.currentUser.uid;
+      },
+      sendWelcomeEmail: function(emailAddress) {
+        emails.$add({emailAddress: emailAddress});
       }
     };
 
