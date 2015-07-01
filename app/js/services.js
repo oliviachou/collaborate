@@ -14,8 +14,6 @@ angular.module('myApp.services', [])
   }])
   .factory('partyService', ['$firebaseArray', 'FIREBASE_URL', 'dataService',
     function($firebaseArray, FIREBASE_URL, dataService) {
-    var parties = $firebaseArray(dataService.child('parties'));
-
 
     var partyServiceObject = {
       saveParty: function(party, uid) {
@@ -71,10 +69,7 @@ angular.module('myApp.services', [])
           size: party.size,
           name: party.name
         };
-        // Need to create connection to Firebase here
-        // because if permissions are not available when service
-        // code first runs, connection to Firebase will be destroyed.
-        $firebaseArray(new Firebase(FIREBASE_URL + 'textMessages')).$add(newTextMessage);
+        dataService.child('textMessages').push(newTextMessage);
         party.notified = true;
         parties.$save(party);
       }
