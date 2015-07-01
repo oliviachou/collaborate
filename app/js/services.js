@@ -32,7 +32,6 @@ angular.module('myApp.services', [])
   .factory('authService', ['$rootScope', '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL', 'dataService',
     function($rootScope, $firebaseAuth, $firebaseArray, FIREBASE_URL, dataService) {
     var firebaseAuthObject = $firebaseAuth(dataService);
-    var emails = $firebaseArray(dataService.child('emails'));
 
     $rootScope.currentUser = null;
 
@@ -55,7 +54,8 @@ angular.module('myApp.services', [])
         return $rootScope.currentUser.uid;
       },
       sendWelcomeEmail: function(emailAddress) {
-        emails.$add({emailAddress: emailAddress});
+        $firebaseArray(dataService.child('emails'))
+          .$add({emailAddress: emailAddress});
       }
     };
 
@@ -63,7 +63,6 @@ angular.module('myApp.services', [])
   }])
   .factory('textMessageService', ['$firebaseArray', 'FIREBASE_URL', 'partyService', 'dataService',
     function($firebaseArray, FIREBASE_URL, partyService, dataService) {
-    var textMessages = $firebaseArray(dataService.child('textMessages'));
 
     var textMessageServiceObject = {
       sendTextMessage: function(party, uid, parties) {
@@ -72,7 +71,10 @@ angular.module('myApp.services', [])
           size: party.size,
           name: party.name
         };
-        textMessages.$add(newTextMessage);
+        // Need to create connection to Firebase here
+        // because if permissions are not available when service
+        // code first runs, connection to Firebase will be destroyed.
+        $firebaseArray(new Firebase(FIREBASE_URL + 'textMessages')).$add(newTextMessage);
         party.notified = true;
         parties.$save(party);
       }
