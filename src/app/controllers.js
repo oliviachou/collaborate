@@ -16,7 +16,7 @@
       // Connect parties to Firebase.
       waitListController.parties = partyService.getPartiesByUser(currentUser.uid);
 
-      // Object to store data from the waitlist form.
+      // Object to store data from the waitList form.
       waitListController.newParty = {
         name: '',
         phone: '',
@@ -25,7 +25,7 @@
         notified: false
       };
 
-      // Function to save a new party to the waitlist.
+      // Function to save a new party to the waitList.
       waitListController.saveParty = function() {
         partyService.saveParty(waitListController.newParty, currentUser.uid);
         waitListController.newParty = {};

@@ -21,7 +21,7 @@
           controller: 'LandingPageController'
         });
         $routeProvider.when('/waitlist', {
-          templateUrl: 'partials/waitlist.html',
+          templateUrl: 'partials/waitList.html',
           controller: 'WaitlistController',
           controllerAs: 'waitlistController',
           resolve: {
