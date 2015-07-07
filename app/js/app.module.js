@@ -6,7 +6,6 @@
       'ngRoute',
       'myApp.filters',
       'myApp.services',
-      'myApp.directives',
       'myApp.controllers',
       'firebase'
     ])
