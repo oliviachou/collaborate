@@ -4,6 +4,7 @@
   angular
     .module('myApp', [
       'ngRoute',
+      'myApp.waitList',
       'myApp.services',
       'myApp.controllers',
       'firebase'

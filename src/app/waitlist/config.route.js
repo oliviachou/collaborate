@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.waitList')
+    .module('myApp.waitList')
     .run(appRun);
 
   appRun.$inject =['$routeProvider'];

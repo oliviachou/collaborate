@@ -2,8 +2,8 @@
   'use strict';
 
   angular
-    .module('app.waitlist')
-    .controller('Waitlist', WaitList);
+    .module('myApp.waitList')
+    .controller('WaitList', WaitList);
 
   WaitList.$inject = ['$firebaseArray', 'FIREBASE_URL', 'partyService', 'textMessageService', 'authService', 'currentUser'];
 
