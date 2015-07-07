@@ -25,7 +25,7 @@ var $sanitizeMinErr = angular.$$minErr('$sanitize');
  * HTML Parser By Misko Hevery (misko@hevery.com)
  * based on:  HTML Parser By John Resig (ejohn.org)
  * Original code by Erik Arvidsson, Mozilla Public License
- * http://erik.eae.net/simplehtmlparser/simplehtmlparser.js
+ * http://erik.eae.net/simplehtmlparser/simplehtmlparser.app
  *
  * // Use like so:
  * htmlParser(htmlString, {

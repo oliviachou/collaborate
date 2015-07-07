@@ -165,7 +165,7 @@ function $RouteProvider(){
     * Normalizes the given path, returning a regular expression
     * and the original path.
     *
-    * Inspired by pathRexp in visionmedia/express/lib/utils.js.
+    * Inspired by pathRexp in visionmedia/express/lib/utils.app.
     */
   function pathRegExp(path, opts) {
     var insensitive = opts.caseInsensitiveMatch,
@@ -255,7 +255,7 @@ function $RouteProvider(){
        Note that this example is using {@link ng.directive:script inlined templates}
        to get it working on jsfiddle as well.
 
-     <example module="ngView" deps="angular-route.js">
+     <example module="ngView" deps="angular-route.app">
        <file name="index.html">
          <div ng-controller="MainCntl">
            Choose:
@@ -287,7 +287,7 @@ function $RouteProvider(){
          Chapter Id: {{params.chapterId}}
        </file>
 
-       <file name="script.js">
+       <file name="script.app">
          angular.module('ngView', ['ngRoute']).config(function($routeProvider, $locationProvider) {
            $routeProvider.when('/Book/:bookId', {
              templateUrl: 'book.html',
@@ -327,7 +327,7 @@ function $RouteProvider(){
          }
        </file>
 
-       <file name="scenario.js">
+       <file name="scenario.app">
          it('should load and compile correct template', function() {
            element('a:contains("Moby: Ch1")').click();
            var content = element('.doc-example-live [ng-view]').text();
@@ -439,7 +439,7 @@ function $RouteProvider(){
      * Check if the route matches the current url.
      *
      * Inspired by match in
-     * visionmedia/express/lib/router/router.js.
+     * visionmedia/express/lib/router/router.app.
      */
     function switchRouteMatcher(on, route) {
       var keys = route.keys,
@@ -642,7 +642,7 @@ ngRouteModule.directive('ngView', ngViewFactory);
  * @scope
  * @priority 400
  * @example
-    <example module="ngViewExample" deps="angular-route.js" animations="true">
+    <example module="ngViewExample" deps="angular-route.app" animations="true">
       <file name="index.html">
         <div ng-controller="MainCntl as main">
           Choose:
@@ -729,7 +729,7 @@ ngRouteModule.directive('ngView', ngViewFactory);
         }
       </file>
 
-      <file name="script.js">
+      <file name="script.app">
         angular.module('ngViewExample', ['ngRoute', 'ngAnimate'], function($routeProvider, $locationProvider) {
           $routeProvider.when('/Book/:bookId', {
             templateUrl: 'book.html',
@@ -763,7 +763,7 @@ ngRouteModule.directive('ngView', ngViewFactory);
         }
       </file>
 
-      <file name="scenario.js">
+      <file name="scenario.app">
         it('should load and compile correct template', function() {
           element('a:contains("Moby: Ch1")').click();
           var content = element('.doc-example-live [ng-view]').text();

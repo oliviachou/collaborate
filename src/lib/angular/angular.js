@@ -1109,7 +1109,7 @@ function angularInit(element, bootstrap) {
   var elements = [element],
       appElement,
       module,
-      names = ['ng:app', 'ng-app', 'x-ng-app', 'data-ng-app'],
+      names = ['ng:src', 'ng-src', 'x-ng-src', 'data-ng-src'],
       NG_APP_CLASS_REGEXP = /\sng[:\-]app(:\s*([\w\d_]+);?)?\s/;
 
   function append(element) {
@@ -1164,7 +1164,7 @@ function angularInit(element, bootstrap) {
  * @param {Array<String|Function|Array>=} modules an array of modules to load into the application.
  *     Each item in the array should be the name of a predefined module or a (DI annotated)
  *     function that will be invoked by the injector as a run block. See: {@link angular.module modules}
- * @returns {AUTO.$injector} Returns the newly created injector for this app.
+ * @returns {AUTO.$injector} Returns the newly created injector for this src.
  */
 function bootstrap(element, modules) {
   var doBootstrap = function() {
@@ -2398,7 +2398,7 @@ forEach({
 
           // Refer to jQuery's implementation of mouseenter & mouseleave
           // Read about mouseenter and mouseleave:
-          // http://www.quirksmode.org/js/events_mouse.html#link8
+          // http://www.quirksmode.org/app/events_mouse.html#link8
           var eventmap = { mouseleave : "mouseout", mouseenter : "mouseover"};
 
           onFn(element, eventmap[type], function(event) {
@@ -3424,7 +3424,7 @@ function createInjector(modulesToLoad) {
          <a id="bottom"></a> You're at the bottom!
        </div>
      </file>
-     <file name="script.js">
+     <file name="script.app">
        function ScrollCtrl($scope, $location, $anchorScroll) {
          $scope.gotoBottom = function (){
            // set the location.hash to the id of
@@ -3513,7 +3513,7 @@ var $animateMinErr = minErr('$animate');
  *
  * In order to enable animations the ngAnimate module has to be loaded.
  *
- * To see the functional implementation check out src/ngAnimate/animate.js
+ * To see the functional implementation check out src/ngAnimate/animate.app
  */
 var $AnimateProvider = ['$provide', function($provide) {
 
@@ -4276,7 +4276,7 @@ function $CacheFactoryProvider() {
  * 
  * Adding via the `script` tag:
  * <pre>
- * <html ng-app>
+ * <html ng-src>
  * <head>
  * <script type="text/ng-template" id="templateId.html">
  *   This is the content of the template
@@ -4287,7 +4287,7 @@ function $CacheFactoryProvider() {
  * </pre>
  * 
  * **Note:** the `script` tag containing the template does not need to be included in the `head` of the document, but 
- * it must be below the `ng-app` definition.
+ * it must be below the `ng-src` definition.
  * 
  * Adding via the $templateCache service:
  * 
@@ -5939,7 +5939,7 @@ function $DocumentProvider(){
  * The default implementation simply delegates to `$log.error` which logs it into
  * the browser console.
  * 
- * In unit tests, if `angular-mocks.js` is loaded, this service is overridden by
+ * In unit tests, if `angular-mocks.app` is loaded, this service is overridden by
  * {@link ngMock.$exceptionHandler mock $exceptionHandler} which aids in testing.
  *
  * ## Example:
@@ -6553,7 +6553,7 @@ function $HttpProvider() {
             <pre>http response data: {{data}}</pre>
           </div>
         </file>
-        <file name="script.js">
+        <file name="script.app">
           function FetchCtrl($scope, $http, $templateCache) {
             $scope.method = 'GET';
             $scope.url = 'http-hello.html';
@@ -6582,7 +6582,7 @@ function $HttpProvider() {
         <file name="http-hello.html">
           Hello, $http!
         </file>
-        <file name="scenario.js">
+        <file name="scenario.app">
           it('should make an xhr GET request', function() {
             element(':button:contains("Sample GET")').click();
             element(':button:contains("fetch")').click();
@@ -7047,7 +7047,7 @@ function createHttpBackend($browser, XHR, $browserDefer, callbacks, rawDocument,
       });
 
       // In IE6 and 7, this might be called synchronously when xhr.send below is called and the
-      // response is in the cache. the promise api will ensure that to the app code the api is
+      // response is in the cache. the promise api will ensure that to the src code the api is
       // always async
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
@@ -7157,7 +7157,7 @@ var $interpolateMinErr = minErr('$interpolate');
             this.label = "This bindings is brought you you by // interpolation symbols.";
         });
       </script>
-      <div ng-app="App" ng-controller="DemoController as demo">
+      <div ng-src="App" ng-controller="DemoController as demo">
           //demo.label//
       </div>
      </doc:source>
@@ -8162,7 +8162,7 @@ function $LocationProvider(){
  *
  * @example
    <example>
-     <file name="script.js">
+     <file name="script.app">
        function LogCtrl($scope, $log) {
          $scope.$log = $log;
          $scope.message = 'Hello World!';
@@ -10116,7 +10116,7 @@ function $RootScopeProvider(){
      *
      * Here is a simple scope snippet to show how you can interact with the scope.
      * <pre>
-     * <file src="./test/ng/rootScopeSpec.js" tag="docs1" />
+     * <file src="./test/ng/rootScopeSpec.app" tag="docs1" />
      * </pre>
      *
      * # Inheritance
@@ -10663,7 +10663,7 @@ function $RootScopeProvider(){
         if (this.$$nextSibling) this.$$nextSibling.$$prevSibling = this.$$prevSibling;
 
         // This is bogus code that works around Chrome's GC leak
-        // see: https://github.com/angular/angular.js/issues/1313#issuecomment-10378451
+        // see: https://github.com/angular/angular.app/issues/1313#issuecomment-10378451
         this.$parent = this.$$nextSibling = this.$$prevSibling = this.$$childHead =
             this.$$childTail = null;
       },
@@ -11025,13 +11025,13 @@ var SCE_CONTEXTS = {
   // RESOURCE_URL is a subtype of URL used in contexts where a privileged resource is sourced from a
   // url.  (e.g. ng-include, script src, templateUrl)
   RESOURCE_URL: 'resourceUrl',
-  JS: 'js'
+  JS: 'app'
 };
 
 // Helper functions follow.
 
 // Copied from:
-// http://docs.closure-library.googlecode.com/git/closure_goog_string_string.js.source.html#line962
+// http://docs.closure-library.googlecode.com/git/closure_goog_string_string.app.source.html#line962
 // Prereq: s is a string.
 function escapeForRegexp(s) {
   return s.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1').
@@ -11121,7 +11121,7 @@ function adjustMatchers(matchers) {
  *
  * **Example**:  Consider the following case. <a name="example"></a>
  *
- * - your app is hosted at url `http://myapp.example.com/`
+ * - your src is hosted at url `http://myapp.example.com/`
  * - but some of your templates are hosted on other domains you control such as
  *   `http://srv01.assets.example.com/`,  `http://srv02.assets.example.com/`, etc.
  * - and you have an open redirect at `http://myapp.example.com/clickThru?...`.
@@ -11298,7 +11298,7 @@ function $SceDelegateProvider() {
      * See {@link ng.$sce $sce} for enabling strict contextual escaping.
      *
      * @param {string} type The kind of context in which this value is safe for use.  e.g. url,
-     *   resourceUrl, html, js and css.
+     *   resourceUrl, html, app and css.
      * @param {*} value The value that that should be considered trusted/safe.
      * @returns {*} A value that can be used to stand in for the provided `value` in places
      * where Angular expects a $sce.trustAs() return value.
@@ -11576,7 +11576,7 @@ function $SceDelegateProvider() {
  *      (even when the RegExp did not have the `^` and `$` codes.)  In addition, any flags
  *      present on the RegExp (such as multiline, global, ignoreCase) are ignored.
  *    - If you are generating your Javascript from some other templating engine (not
- *      recommended, e.g. in issue [#4006](https://github.com/angular/angular.js/issues/4006)),
+ *      recommended, e.g. in issue [#4006](https://github.com/angular/angular.app/issues/4006)),
  *      remember to escape your regular expression (and be aware that you might need more than
  *      one level of escaping depending on your templating engine and the way you interpolated
  *      the value.)  Do make use of your platform's escaping mechanism as it might be good
@@ -11585,7 +11585,7 @@ function $SceDelegateProvider() {
  *      and Python has [re.escape](http://docs.python.org/library/re.html#re.escape).
  *      Javascript lacks a similar built in function for escaping.  Take a look at Google
  *      Closure library's [goog.string.regExpEscape(s)](
- *      http://docs.closure-library.googlecode.com/git/closure_goog_string_string.js.source.html#line962).
+ *      http://docs.closure-library.googlecode.com/git/closure_goog_string_string.app.source.html#line962).
  *
  * Refer {@link ng.$sceDelegateProvider#example $sceDelegateProvider} for an example.
  *
@@ -11608,7 +11608,7 @@ function $SceDelegateProvider() {
     </div>
   </file>
 
-  <file name="script.js">
+  <file name="script.app">
     var mySceApp = angular.module('mySceApp', ['ngSanitize']);
 
     mySceApp.controller("myAppController", function myAppController($http, $templateCache, $sce) {
@@ -11633,7 +11633,7 @@ function $SceDelegateProvider() {
     ]
   </file>
 
-  <file name="scenario.js">
+  <file name="scenario.app">
     describe('SCE doc demo', function() {
       it('should sanitize untrusted values', function() {
         expect(element('.htmlComment').html()).toBe('<span>Is <i>anyone</i> reading this?</span>');
@@ -11735,7 +11735,7 @@ function $SceProvider() {
    *
    * Inheritance happens to capture this in a natural way.  In some future, we
    * may not use inheritance anymore.  That is OK because no code outside of
-   * sce.js and sceSpecs.js would need to be aware of this detail.
+   * sce.app and sceSpecs.app would need to be aware of this detail.
    */
 
   this.$get = ['$parse', '$document', '$sceDelegate', function(
@@ -11822,7 +11822,7 @@ function $SceProvider() {
      * {@link ng.$sce $sce} for enabling strict contextual escaping.
      *
      * @param {string} type The kind of context in which this value is safe for use.  e.g. url,
-     *   resource_url, html, js and css.
+     *   resource_url, html, app and css.
      * @param {*} value The value that that should be considered trusted/safe.
      * @returns {*} A value that can be used to stand in for the provided `value` in places
      * where Angular expects a $sce.trustAs() return value.
@@ -12127,7 +12127,7 @@ function $SnifferProvider() {
       // Android has history.pushState, but it does not update location correctly
       // so let's not use the history API at all.
       // http://code.google.com/p/android/issues/detail?id=17471
-      // https://github.com/angular/angular.js/issues/904
+      // https://github.com/angular/angular.app/issues/904
 
       // older webit browser (533.9) on Boxee box has exactly the same problem as Android has
       // so let's not use the history API also
@@ -12370,7 +12370,7 @@ var originUrl = urlResolve(window.location.href, true);
  *   http://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement
  *   http://www.aptana.com/reference/html/api/HTMLAnchorElement.html
  *   http://url.spec.whatwg.org/#urlutils
- *   https://github.com/angular/angular.js/pull/2902
+ *   https://github.com/angular/angular.app/pull/2902
  *   http://james.padolsey.com/javascript/parsing-urls-with-the-dom/
  *
  * @function
@@ -15150,7 +15150,7 @@ var VALID_CLASS = 'ng-valid',
       }
 
     </file>
-    <file name="script.js">
+    <file name="script.app">
       angular.module('customControl', []).
         directive('contenteditable', function() {
           return {
@@ -15195,7 +15195,7 @@ var VALID_CLASS = 'ng-valid',
        <textarea ng-model="userContent"></textarea>
       </form>
     </file>
-    <file name="scenario.js">
+    <file name="scenario.app">
       it('should data-bind and become invalid', function() {
         var contentEditable = element('[contenteditable]');
 
@@ -15218,7 +15218,7 @@ var VALID_CLASS = 'ng-valid',
  * seem to be attached to the same model, they are not kept in synch.
  *
  * <example module="badIsolatedDirective">
-    <file name="script.js">
+    <file name="script.app">
 		angular.module('badIsolatedDirective', []).directive('bad', function() {
 		  return {
 		    require: 'ngModel',
@@ -15464,7 +15464,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
  *
  * For best practices on using `ngModel`, see:
  *
- *  - {@link https://github.com/angular/angular.js/wiki/Understanding-Scopes}
+ *  - {@link https://github.com/angular/angular.app/wiki/Understanding-Scopes}
  *
  * For basic examples, how to use `ngModel`, see:
  *
@@ -16012,7 +16012,7 @@ function classDirective(name, selector) {
            color: red;
        }
      </file>
-     <file name="scenario.js">
+     <file name="scenario.app">
        it('should let you toggle the class', function() {
 
          expect(element('.doc-example-live p:first').prop('className')).not().toMatch(/bold/);
@@ -16071,7 +16071,7 @@ function classDirective(name, selector) {
          color:black;
        }
      </file>
-     <file name="scenario.js">
+     <file name="scenario.app">
        it('should check ng-class', function() {
          expect(element('.doc-example-live span').prop('className')).not().
            toMatch(/my-class/);
@@ -16135,7 +16135,7 @@ var ngClassDirective = classDirective('', true);
          color: blue;
        }
      </file>
-     <file name="scenario.js">
+     <file name="scenario.app">
        it('should check ng-class-odd and ng-class-even', function() {
          expect(element('.doc-example-live li:first span').prop('className')).
            toMatch(/odd/);
@@ -16183,7 +16183,7 @@ var ngClassOddDirective = classDirective('Odd', 0);
          color: blue;
        }
      </file>
-     <file name="scenario.js">
+     <file name="scenario.app">
        it('should check ng-class-odd and ng-class-even', function() {
          expect(element('.doc-example-live li:first span').prop('className')).
            toMatch(/odd/);
@@ -16209,8 +16209,8 @@ var ngClassEvenDirective = classDirective('Even', 1);
  * multiple `ngCloak` directives to small portions of the page to permit progressive rendering
  * of the browser view.
  *
- * `ngCloak` works in cooperation with the following css rule embedded within `angular.js` and
- *  `angular.min.js`:
+ * `ngCloak` works in cooperation with the following css rule embedded within `angular.app` and
+ *  `angular.min.app`:
  *
  * <pre>
  * [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -16223,7 +16223,7 @@ var ngClassEvenDirective = classDirective('Even', 1);
  * during the compilation of the template it deletes the `ngCloak` element attribute, making
  * the compiled element visible.
  *
- * For the best result, the `angular.js` script must be loaded in the head section of the html
+ * For the best result, the `angular.app` script must be loaded in the head section of the html
  * document; alternatively, the css rule above must be included in the external stylesheet of the
  * application.
  *
@@ -16451,7 +16451,7 @@ var ngControllerDirective = [function() {
  * This example shows how to apply the `ngCsp` directive to the `html` tag.
    <pre>
      <!doctype html>
-     <html ng-app ng-csp>
+     <html ng-src ng-csp>
      ...
      ...
      </html>
@@ -16826,7 +16826,7 @@ forEach(
  * Note that when an element is removed using `ngIf` its scope is destroyed and a new scope
  * is created when the element is restored.  The scope created within `ngIf` inherits from
  * its parent scope using
- * {@link https://github.com/angular/angular.js/wiki/The-Nuances-of-Scope-Prototypal-Inheritance prototypal inheritance}.
+ * {@link https://github.com/angular/angular.app/wiki/The-Nuances-of-Scope-Prototypal-Inheritance prototypal inheritance}.
  * An important implication of this is if `ngModel` is used within `ngIf` to bind to
  * a javascript primitive defined in the parent scope. In this case any modifications made to the
  * variable within the child scope will override (hide) the value in the parent scope.
@@ -16972,7 +16972,7 @@ var ngIfDirective = ['$animate', function($animate) {
        </div>
      </div>
     </file>
-    <file name="script.js">
+    <file name="script.app">
       function Ctrl($scope) {
         $scope.templates =
           [ { name: 'template1.html', url: 'template1.html'}
@@ -17028,7 +17028,7 @@ var ngIfDirective = ['$animate', function($animate) {
         top:50px;
       }
     </file>
-    <file name="scenario.js">
+    <file name="scenario.app">
       it('should load template1.html', function() {
        expect(element('.doc-example-live [ng-include]').text()).
          toMatch(/Content of template1.html/);
@@ -17230,7 +17230,7 @@ var ngNonBindableDirective = ngDirective({ terminal: true, priority: 1000 });
  * @description
  * # Overview
  * `ngPluralize` is a directive that displays messages according to en-US localization rules.
- * These rules are bundled with angular.js, but can be overridden
+ * These rules are bundled with angular.app, but can be overridden
  * (see {@link guide/i18n Angular i18n} dev guide). You configure ngPluralize directive
  * by specifying the mappings between
  * {@link http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
@@ -17618,7 +17618,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
       .animate-repeat.ng-move { }
       .animate-repeat.ng-move.ng-move-active { }
     </file>
-    <file name="scenario.js">
+    <file name="scenario.app">
        it('should render initial data set', function() {
          var r = using('.doc-example-live').repeater('ul li');
          expect(r.count()).toBe(10);
@@ -17976,7 +17976,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
         background:white;
       }
     </file>
-    <file name="scenario.js">
+    <file name="scenario.app">
        it('should check ng-show / ng-hide', function() {
          expect(element('.doc-example-live span:first:hidden').count()).toEqual(1);
          expect(element('.doc-example-live span:last:visible').count()).toEqual(1);
@@ -18128,7 +18128,7 @@ var ngShowDirective = ['$animate', function($animate) {
         background:white;
       }
     </file>
-    <file name="scenario.js">
+    <file name="scenario.app">
        it('should check ng-show / ng-hide', function() {
          expect(element('.doc-example-live .check-element:first:hidden').count()).toEqual(1);
          expect(element('.doc-example-live .check-element:last:visible').count()).toEqual(1);
@@ -18176,7 +18176,7 @@ var ngHideDirective = ['$animate', function($animate) {
          color: black;
        }
      </file>
-     <file name="scenario.js">
+     <file name="scenario.app">
        it('should check ng-style', function() {
          expect(element('.doc-example-live span').css('color')).toBe('rgb(0, 0, 0)');
          element('.doc-example-live :button[value=set]').click();
@@ -18256,7 +18256,7 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
         </div>
       </div>
     </file>
-    <file name="script.js">
+    <file name="script.app">
       function Ctrl($scope) {
         $scope.items = ['settings', 'home', 'other'];
         $scope.selection = $scope.items[0];
@@ -18303,7 +18303,7 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
         top:50px;
       }
     </file>
-    <file name="scenario.js">
+    <file name="scenario.app">
       it('should start in settings', function() {
         expect(element('.doc-example-live [ng-switch]').text()).toMatch(/Settings Div/);
       });
