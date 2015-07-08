@@ -8,23 +8,19 @@
       'firebase',
 
       // Custom modules.
-      'app.waitList',
       'app.auth',
+      'app.landing',
+      'app.waitList',
 
       // To be removed.
-      'app.services',
-      'app.controllers'
+      'app.services'
     ])
     .run(appRun)
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/', {
-          templateUrl: 'partials/landing_page.html',
-          controller: 'LandingPageController'
-        });
-        $routeProvider.otherwise({
-          redirectTo: '/'
-        });
-      }]);
+      $routeProvider.otherwise({
+        redirectTo: '/'
+      });
+    }]);
 
   appRun.$inject = ['$rootScope', '$location'];
 
