@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('myApp.waitList')
+    .module('app.waitList')
     .controller('WaitList', WaitList);
 
   WaitList.$inject = ['partyService', 'textMessageService', 'currentUser'];

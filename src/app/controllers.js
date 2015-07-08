@@ -3,7 +3,7 @@
 
   /* Controllers */
 
-  angular.module('myApp.controllers', [])
+  angular.module('app.controllers', [])
     .controller('LandingPageController', [function() {
 
     }])

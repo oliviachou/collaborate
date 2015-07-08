@@ -1,5 +1,5 @@
 (function() {
   'use strict';
 
-  angular.module('myApp.auth', []);
+  angular.module('app.auth', []);
 })();

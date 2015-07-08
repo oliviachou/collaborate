@@ -6,7 +6,7 @@
 
   // Demonstrate how to register services
   // In this case it is a simple value service.
-  angular.module('myApp.services', [])
+  angular.module('app.services', [])
     .value('FIREBASE_URL', 'https://gz-angularfire-test.firebaseio.com/')
     .factory('dataService', ['FIREBASE_URL', function(FIREBASE_URL) {
       var dataReference = new Firebase(FIREBASE_URL);

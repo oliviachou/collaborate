@@ -2,11 +2,11 @@
   'use strict';
 
   angular
-    .module('myApp', [
+    .module('app', [
       'ngRoute',
-      'myApp.waitList',
-      'myApp.services',
-      'myApp.controllers',
+      'app.waitList',
+      'app.services',
+      'app.controllers',
       'firebase'
     ])
     .run(appRun)
