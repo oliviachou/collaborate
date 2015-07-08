@@ -3,12 +3,12 @@
 
   angular
     .module('myApp.waitList')
-    .config(appRun);
+    .config(appConfig);
 
-  appRun.$inject = ['$routeProvider'];
+  appConfig.$inject = ['$routeProvider'];
   resolveCurrentUser.$inject = ['authService'];
 
-  function appRun($routeProvider) {
+  function appConfig($routeProvider) {
     $routeProvider.when('/waitlist', {
       templateUrl: 'app/waitList/waitList.html',
       controller: 'WaitList',
