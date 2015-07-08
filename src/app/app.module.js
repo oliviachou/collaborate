@@ -3,28 +3,23 @@
 
   angular
     .module('app', [
+      // Angular and third-party modules.
       'ngRoute',
+      'firebase',
+
+      // Custom modules.
       'app.waitList',
       'app.auth',
+
+      // To be removed.
       'app.services',
-      'app.controllers',
-      'firebase'
+      'app.controllers'
     ])
     .run(appRun)
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {
           templateUrl: 'partials/landing_page.html',
           controller: 'LandingPageController'
-        });
-        $routeProvider.when('/register', {
-          templateUrl: 'partials/register.html',
-          controller: 'AuthController',
-          controllerAs: 'authController'
-        });
-        $routeProvider.when('/login', {
-          templateUrl: 'partials/login.html',
-          controller: 'AuthController',
-          controllerAs: 'authController'
         });
         $routeProvider.otherwise({
           redirectTo: '/'

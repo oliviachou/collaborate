@@ -8,12 +8,12 @@
   appConfig.$inject = ['$routeProvider'];
 
   function appConfig($routeProvider) {
-    $routeProvider.when('/register-modular', {
+    $routeProvider.when('/register', {
       templateUrl: 'app/auth/register.html',
       controller: 'Auth',
       controllerAs: 'vm'
     });
-    $routeProvider.when('/login-modular', {
+    $routeProvider.when('/login', {
       templateUrl: 'app/auth/login.html',
       controller: 'Auth',
       controllerAs: 'vm'
