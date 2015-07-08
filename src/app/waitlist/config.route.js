@@ -3,20 +3,15 @@
 
   angular
     .module('myApp.waitList')
-    .run(appRun);
+    .config(appRun);
 
-  appRun.$inject =['$routeProvider'];
+  appRun.$inject = ['$routeProvider'];
 
   function appRun($routeProvider) {
-    $routeProvider.when('/waitlist', {
+    $routeProvider.when('/waitlist-modular', {
       templateUrl: 'app/waitList/waitList.html',
-      controller: 'WaitListController',
-      controllerAs: 'vm',
-      resolve: {
-        currentUser: ['$location', 'authService', function($location, authService) {
-          return authService.firebaseAuthObject.$requireAuth();
-        }]
-      }
+      controller: 'WaitList'
     });
   }
+
 })();
