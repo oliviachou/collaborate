@@ -21,16 +21,6 @@
           templateUrl: 'partials/landing_page.html',
           controller: 'LandingPageController'
         });
-        $routeProvider.when('/waitlist', {
-          templateUrl: 'partials/waitList.html',
-          controller: 'WaitlistController',
-          controllerAs: 'waitlistController',
-          resolve: {
-            currentUser: ['$location', 'authService', function($location, authService) {
-              return authService.firebaseAuthObject.$requireAuth();
-            }]
-          }
-        });
         $routeProvider.when('/register', {
           templateUrl: 'partials/register.html',
           controller: 'AuthController',

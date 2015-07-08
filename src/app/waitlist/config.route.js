@@ -9,7 +9,7 @@
   resolveCurrentUser.$inject = ['authService'];
 
   function appRun($routeProvider) {
-    $routeProvider.when('/waitlist-modular', {
+    $routeProvider.when('/waitlist', {
       templateUrl: 'app/waitList/waitList.html',
       controller: 'WaitList',
       controllerAs: 'vm',
