@@ -5,6 +5,7 @@
     .module('app', [
       'ngRoute',
       'app.waitList',
+      'app.auth',
       'app.services',
       'app.controllers',
       'firebase'
