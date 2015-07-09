@@ -8,31 +8,27 @@
   WaitList.$inject = ['partyService', 'textMessageService', 'currentUser'];
 
   function WaitList(partyService, textMessageService, currentUser) {
-    // Keep a reference to the controller instance.
-    var waitListController = this;
+    var vm = this;
 
-    // Connect parties to Firebase.
-    waitListController.parties = partyService.getPartiesByUser(currentUser.uid);
-
-    // Object to store data from the waitList form.
-    waitListController.newParty = {
+    vm.parties = partyService.getPartiesByUser(currentUser.uid);
+    vm.newParty = {
       name: '',
       phone: '',
       size: '',
       done: false,
       notified: false
     };
+    vm.saveParty = saveParty;
+    vm.sendTextMessage = sendTextMessage;
 
-    // Function to save a new party to the waitList.
-    waitListController.saveParty = function() {
-      partyService.saveParty(waitListController.newParty, currentUser.uid);
-      waitListController.newParty = {};
-    };
+    function saveParty() {
+      partyService.saveParty(vm.newParty, currentUser.uid);
+      vm.newParty = {};
+    }
 
-    // Function to send a text message to a party.
-    waitListController.sendTextMessage = function(party) {
-      textMessageService.sendTextMessage(party, currentUser.uid, waitListController.parties);
-    };
+    function sendTextMessage(party) {
+      textMessageService.sendTextMessage(party, currentUser.uid, vm.parties);
+    }
   }
 
 })();
