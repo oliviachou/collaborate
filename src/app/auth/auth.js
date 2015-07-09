@@ -14,8 +14,12 @@
       email: '',
       password: ''
     };
+    vm.register = register;
+    vm.login = login;
+    vm.logout = logout;
 
-    vm.register = function() {
+
+    function register() {
       authService.register(vm.user)
         .then(function(user) {
           return vm.login();
@@ -26,9 +30,9 @@
         .catch(function(error) {
           console.log(error);
         });
-    };
+    }
 
-    vm.login = function() {
+    function login() {
       return authService.login(vm.user)
         .then(function(user) {
           $location.path('/waitlist');
@@ -37,12 +41,12 @@
         .catch(function(error) {
           console.log(error);
         });
-    };
+    }
 
-    vm.logout = function() {
+    function logout() {
       authService.logout();
       $location.path('/');
-    };
+    }
   }
 
 })();
