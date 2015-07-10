@@ -5,9 +5,9 @@
     .module('app.waitList')
     .controller('WaitList', WaitList);
 
-  WaitList.$inject = ['partyService', 'textMessageService', 'currentUser'];
+  WaitList.$inject = ['$rootScope', 'partyService', 'textMessageService', 'currentUser'];
 
-  function WaitList(partyService, textMessageService, currentUser) {
+  function WaitList($rootScope, partyService, textMessageService, currentUser) {
     var vm = this;
 
     vm.parties = partyService.getPartiesByUser(currentUser.uid);
@@ -20,6 +20,10 @@
     };
     vm.saveParty = saveParty;
     vm.sendTextMessage = sendTextMessage;
+
+    $rootScope.$on('logout', function() {
+      vm.parties.$destroy();
+    });
 
     function saveParty() {
       partyService.saveParty(vm.newParty, currentUser.uid);

@@ -47,6 +47,7 @@
           return firebaseAuthObject.$authWithPassword(user);
         },
         logout: function() {
+          $rootScope.$broadcast('logout');
           firebaseAuthObject.$unauth();
         },
         getCurrentUser: function() {
