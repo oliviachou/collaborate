@@ -54,8 +54,8 @@
           return $rootScope.currentUser.uid;
         },
         sendWelcomeEmail: function(emailAddress) {
-          $firebaseArray(dataService.child('emails'))
-            .$add({emailAddress: emailAddress});
+          dataService.child('emails')
+            .push({emailAddress: emailAddress});
         }
       };
 

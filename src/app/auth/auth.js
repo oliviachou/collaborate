@@ -21,11 +21,11 @@
 
     function register() {
       authService.register(vm.user)
-        .then(function(user) {
+        .then(function() {
           return vm.login();
         })
-        .then(function(user) {
-          return authService.sendWelcomeEmail(user.password.email);
+        .then(function() {
+          return authService.sendWelcomeEmail(vm.user.email);
         })
         .catch(function(error) {
           console.log(error);
