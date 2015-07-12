@@ -3,13 +3,14 @@
 
   angular
     .module('app', [
-      // Third-party.
+      // Third-party modules.
       'ngRoute',
       'firebase',
 
-      // Custom.
+      // Custom modules.
       'app.auth',
       'app.landing',
+      'app.shared',
       'app.waitList',
 
       // To be removed.
