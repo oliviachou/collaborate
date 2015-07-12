@@ -9,8 +9,8 @@
 
       // Custom modules.
       'app.auth',
+      'app.core',
       'app.landing',
-      'app.shared',
       'app.waitList',
 
       // To be removed.

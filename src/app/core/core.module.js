@@ -1,5 +1,5 @@
 (function() {
   'use strict';
 
-  angular.module('app.shared', []);
+  angular.module('app.core', []);
 })();
