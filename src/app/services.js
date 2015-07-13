@@ -2,21 +2,6 @@
   'use strict';
 
   angular.module('app.services', [])
-    .factory('partyService', ['$firebaseArray', 'FIREBASE_URL', 'firebaseData',
-      function($firebaseArray, FIREBASE_URL, firebaseData) {
-
-      var partyServiceObject = {
-        saveParty: function(party, uid) {
-          var user = $firebaseArray(firebaseData.child('users').child(uid));
-          user.$add(party);
-        },
-        getPartiesByUser: function(uid) {
-          return  $firebaseArray(firebaseData.child('users').child(uid));
-        }
-      };
-
-      return partyServiceObject;
-    }])
     .factory('authService', ['$rootScope', '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL', 'firebaseData',
       function($rootScope, $firebaseAuth, $firebaseArray, FIREBASE_URL, firebaseData) {
       var firebaseAuthObject = $firebaseAuth(firebaseData);
