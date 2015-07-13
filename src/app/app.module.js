@@ -11,10 +11,10 @@
       'app.auth',
       'app.core',
       'app.landing',
-      'app.waitList',
+      'app.waitList'
 
       // To be removed.
-      'app.services'
+      //'app.services'
     ])
     .run(appRun)
     .config(['$routeProvider', function($routeProvider) {
