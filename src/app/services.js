@@ -35,8 +35,8 @@
 
       return authServiceObject;
     }])
-    .factory('textMessageService', ['$firebaseArray', 'FIREBASE_URL', 'partyService', 'firebaseData',
-      function($firebaseArray, FIREBASE_URL, partyService, firebaseData) {
+    .factory('textMessageService', ['$firebaseArray', 'FIREBASE_URL', 'party', 'firebaseData',
+      function($firebaseArray, FIREBASE_URL, party, firebaseData) {
 
       var textMessageServiceObject = {
         sendTextMessage: function(party, uid, parties) {
