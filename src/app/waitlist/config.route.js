@@ -6,7 +6,6 @@
     .config(appConfig);
 
   appConfig.$inject = ['$routeProvider'];
-  resolveCurrentUser.$inject = ['authService'];
 
   function appConfig($routeProvider) {
     $routeProvider.when('/waitlist', {
@@ -16,6 +15,8 @@
       resolve: {currentUser: resolveCurrentUser}
     });
   }
+
+  resolveCurrentUser.$inject = ['authService'];
 
   function resolveCurrentUser(authService) {
     return authService.firebaseAuthObject.$requireAuth();

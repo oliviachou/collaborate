@@ -8,7 +8,7 @@
   authService.$inject = ['$rootScope', '$firebaseAuth', 'firebaseData'];
 
   function authService($rootScope, $firebaseAuth, firebaseData) {
-    var firebaseAuthObject = $firebaseAuth(firebaseData);
+    var firebaseAuthObject = $firebaseAuth(firebaseData)
 
     $rootScope.currentUser = null;
 
@@ -16,25 +16,37 @@
       $rootScope.currentUser = currentUser;
     });
 
-    var authServiceObject = {
+
+    var service = {
       firebaseAuthObject: firebaseAuthObject,
-      register: function(user) {
-        return firebaseAuthObject.$createUser(user);
-      },
-      login: function(user) {
-        return firebaseAuthObject.$authWithPassword(user);
-      },
-      logout: function() {
-        $rootScope.$broadcast('logout');
-        firebaseAuthObject.$unauth();
-      },
-      sendWelcomeEmail: function(emailAddress) {
-        firebaseData.child('emails')
-          .push({emailAddress: emailAddress});
-      }
+      register: register,
+      login: login,
+      logout: logout,
+      sendWelcomeEmail: sendWelcomeEmail
     };
 
-    return authServiceObject;
+    return service;
+
+    ////////////
+
+    function register(user) {
+      return firebaseAuthObject.$createUser(user);
+    }
+
+    function login(user) {
+      return firebaseAuthObject.$authWithPassword(user);
+    }
+
+    function logout() {
+      $rootScope.$broadcast('logout');
+      firebaseAuthObject.$unauth();
+    }
+
+    function sendWelcomeEmail(emailAddress) {
+      firebaseData.child('emails')
+        .push({emailAddress: emailAddress});
+    }
+
   }
 
 })();
