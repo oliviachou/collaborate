@@ -20,7 +20,7 @@
 
 
     function register() {
-      authService.register(vm.user)
+      return authService.register(vm.user)
         .then(function() {
           return vm.login();
         })
