@@ -28,9 +28,6 @@
         $rootScope.$broadcast('logout');
         firebaseAuthObject.$unauth();
       },
-      getCurrentUser: function() {
-        return $rootScope.currentUser.uid;
-      },
       sendWelcomeEmail: function(emailAddress) {
         firebaseData.child('emails')
           .push({emailAddress: emailAddress});
