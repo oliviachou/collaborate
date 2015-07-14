@@ -21,10 +21,6 @@
     vm.saveParty = saveParty;
     vm.sendTextMessage = sendTextMessage;
 
-    $rootScope.$on('logout', function() {
-      vm.parties.$destroy();
-    });
-
     function saveParty() {
       party.saveParty(vm.newParty, currentUser.uid);
       vm.newParty = {};
@@ -33,6 +29,10 @@
     function sendTextMessage(party) {
       textMessageService.sendTextMessage(party, currentUser.uid, vm.parties);
     }
+
+    $rootScope.$on('logout', function() {
+      vm.parties.$destroy();
+    });
   }
 
 })();
