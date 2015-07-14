@@ -15,12 +15,16 @@
       'app.landing',
       'app.waitList'
     ])
-    .run(appRun)
-    .config(['$routeProvider', function($routeProvider) {
-      $routeProvider.otherwise({
-        redirectTo: '/'
-      });
-    }]);
+    .config(appConfig)
+    .run(appRun);
+
+  appConfig.$inject = ['$routeProvider'];
+
+  function appConfig($routeProvider) {
+    $routeProvider.otherwise({
+      redirectTo: '/'
+    });
+  }
 
   appRun.$inject = ['$rootScope', '$location'];
 
