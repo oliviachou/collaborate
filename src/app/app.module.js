@@ -3,8 +3,10 @@
 
   angular
     .module('app', [
-      // Third-party modules.
+      // Angular modules.
       'ngRoute',
+
+      // Third party modules.
       'firebase',
 
       // Custom modules.
