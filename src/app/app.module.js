@@ -12,9 +12,6 @@
       'app.core',
       'app.landing',
       'app.waitList'
-
-      // To be removed.
-      //'app.services'
     ])
     .run(appRun)
     .config(['$routeProvider', function($routeProvider) {
