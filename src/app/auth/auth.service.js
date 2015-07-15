@@ -8,14 +8,13 @@
   authService.$inject = ['$rootScope', '$firebaseAuth', 'firebaseData'];
 
   function authService($rootScope, $firebaseAuth, firebaseData) {
-    var firebaseAuthObject = $firebaseAuth(firebaseData);
+    var firebaseAuthObject = $firebaseAuth(firebaseData.root);
 
     $rootScope.currentUser = null;
 
     firebaseAuthObject.$onAuth(function(currentUser) {
       $rootScope.currentUser = currentUser;
     });
-
 
     var service = {
       firebaseAuthObject: firebaseAuthObject,
@@ -43,7 +42,7 @@
     }
 
     function sendWelcomeEmail(emailAddress) {
-      firebaseData.child('emails')
+      firebaseData.root.child('emails')
         .push({emailAddress: emailAddress});
     }
 

@@ -9,7 +9,7 @@
 
   function textMessageService(firebaseData) {
     var service = {
-      sendTexMessage: sendTextMessage
+      sendTextMessage: sendTextMessage
     };
 
     return service;
@@ -22,7 +22,7 @@
         size: party.size,
         name: party.name
       };
-      firebaseData.child('textMessages').push(newTextMessage);
+      firebaseData.root.child('textMessages').push(newTextMessage);
       party.notified = true;
       parties.$save(party);
     }

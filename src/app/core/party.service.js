@@ -9,8 +9,6 @@
 
   function party($firebaseArray, firebaseData) {
 
-    var users = firebaseData.child('users');
-
     var service = {
       saveParty: saveParty,
       getPartiesByUser: getPartiesByUser
@@ -21,11 +19,11 @@
     ////////////
 
     function saveParty(party, uid) {
-      users.child(uid).push(party);
+      firebaseData.users.child(uid).push(party);
     }
 
     function getPartiesByUser(uid) {
-      return $firebaseArray(users.child(uid));
+      return $firebaseArray(firebaseData.users.child(uid));
     }
   }
 
