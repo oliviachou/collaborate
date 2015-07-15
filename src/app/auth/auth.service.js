@@ -42,8 +42,9 @@
     }
 
     function sendWelcomeEmail(emailAddress) {
-      firebaseData.root.child('emails')
-        .push({emailAddress: emailAddress});
+      firebaseData.emails.push({
+        emailAddress: emailAddress
+      });
     }
 
   }

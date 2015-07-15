@@ -22,7 +22,7 @@
         size: party.size,
         name: party.name
       };
-      firebaseData.root.child('textMessages').push(newTextMessage);
+      firebaseData.textMessages.push(newTextMessage);
       party.notified = true;
       parties.$save(party);
     }
