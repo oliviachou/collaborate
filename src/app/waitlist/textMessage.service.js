@@ -16,7 +16,7 @@
 
     ////////////
 
-    function sendTextMessage(party, uid, parties) {
+    function sendTextMessage(party, parties) {
       var newTextMessage = {
         phoneNumber: party.phone,
         size: party.size,

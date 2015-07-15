@@ -27,7 +27,7 @@
     }
 
     function sendTextMessage(party) {
-      textMessageService.sendTextMessage(party, currentUser.uid, vm.parties);
+      textMessageService.sendTextMessage(party, vm.parties);
     }
 
     $rootScope.$on('logout', function() {
