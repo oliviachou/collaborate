@@ -3,11 +3,11 @@
 
   angular
     .module('app.auth')
-    .controller('Auth', Auth);
+    .controller('AuthController', AuthController);
 
-  Auth.$inject = ['$location', 'authService'];
+  AuthController.$inject = ['$location', 'authService'];
 
-  function Auth($location, authService) {
+  function AuthController($location, authService) {
     var vm = this;
 
     vm.user = {
