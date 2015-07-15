@@ -18,6 +18,8 @@
 
     return service;
 
+    ////////////
+
     function saveParty(party, uid) {
       users.child(uid).push(party);
     }

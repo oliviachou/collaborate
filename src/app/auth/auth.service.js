@@ -8,7 +8,7 @@
   authService.$inject = ['$rootScope', '$firebaseAuth', 'firebaseData'];
 
   function authService($rootScope, $firebaseAuth, firebaseData) {
-    var firebaseAuthObject = $firebaseAuth(firebaseData)
+    var firebaseAuthObject = $firebaseAuth(firebaseData);
 
     $rootScope.currentUser = null;
 

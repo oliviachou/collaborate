@@ -3,11 +3,11 @@
 
   angular
     .module('app.auth')
-    .config(appConfig);
+    .config(configFunction);
 
-  appConfig.$inject = ['$routeProvider'];
+  configFunction.$inject = ['$routeProvider'];
 
-  function appConfig($routeProvider) {
+  function configFunction($routeProvider) {
     $routeProvider.when('/register', {
       templateUrl: 'app/auth/register.html',
       controller: 'Auth',
