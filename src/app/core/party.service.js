@@ -3,11 +3,11 @@
 
   angular
     .module('app.core')
-    .factory('party', party);
+    .factory('partyService', partyService);
 
-  party.$inject = ['$firebaseArray', 'firebaseDataService'];
+  partyService.$inject = ['$firebaseArray', 'firebaseDataService'];
 
-  function party($firebaseArray, firebaseDataService) {
+  function partyService($firebaseArray, firebaseDataService) {
 
     var service = {
       saveParty: saveParty,
