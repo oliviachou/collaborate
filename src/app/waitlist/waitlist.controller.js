@@ -3,11 +3,11 @@
 
   angular
     .module('app.waitList')
-    .controller('WaitList', WaitList);
+    .controller('WaitlistController', WaitlistController);
 
-  WaitList.$inject = ['$rootScope', 'partyService', 'textMessageService', 'currentUser'];
+  WaitlistController.$inject = ['$rootScope', 'partyService', 'textMessageService', 'currentUser'];
 
-  function WaitList($rootScope, partyService, textMessageService, currentUser) {
+  function WaitlistController($rootScope, partyService, textMessageService, currentUser) {
     var vm = this;
 
     vm.parties = partyService.getPartiesByUser(currentUser.uid);
