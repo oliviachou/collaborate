@@ -5,10 +5,10 @@
     .module('app.auth')
     .factory('authService', authService);
 
-  authService.$inject = ['$rootScope', '$firebaseAuth', 'firebaseData'];
+  authService.$inject = ['$rootScope', '$firebaseAuth', 'firebaseDataService'];
 
-  function authService($rootScope, $firebaseAuth, firebaseData) {
-    var firebaseAuthObject = $firebaseAuth(firebaseData.root);
+  function authService($rootScope, $firebaseAuth, firebaseDataService) {
+    var firebaseAuthObject = $firebaseAuth(firebaseDataService.root);
 
     $rootScope.currentUser = null;
 
@@ -42,7 +42,7 @@
     }
 
     function sendWelcomeEmail(emailAddress) {
-      firebaseData.emails.push({
+      firebaseDataService.emails.push({
         emailAddress: emailAddress
       });
     }

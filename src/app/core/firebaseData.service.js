@@ -3,11 +3,11 @@
 
   angular
     .module('app.core')
-    .factory('firebaseData', firebaseData);
+    .factory('firebaseDataService', firebaseDataService);
 
-  firebaseData.$inject = ['FIREBASE_URL'];
+  firebaseDataService.$inject = ['FIREBASE_URL'];
 
-  function firebaseData(FIREBASE_URL  ) {
+  function firebaseDataService(FIREBASE_URL  ) {
     var root = new Firebase(FIREBASE_URL);
 
     var service = {

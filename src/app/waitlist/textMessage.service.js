@@ -5,9 +5,9 @@
     .module('app.waitList')
     .factory('textMessageService', textMessageService);
 
-  textMessageService.$inject = ['firebaseData'];
+  textMessageService.$inject = ['firebaseDataService'];
 
-  function textMessageService(firebaseData) {
+  function textMessageService(firebaseDataService) {
     var service = {
       sendTextMessage: sendTextMessage
     };
@@ -22,7 +22,7 @@
         size: party.size,
         name: party.name
       };
-      firebaseData.textMessages.push(newTextMessage);
+      firebaseDataService.textMessages.push(newTextMessage);
       party.notified = true;
       parties.$save(party);
     }
