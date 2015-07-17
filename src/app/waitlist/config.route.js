@@ -12,13 +12,13 @@
       templateUrl: 'app/waitList/waitList.html',
       controller: 'WaitListController',
       controllerAs: 'vm',
-      resolve: {currentUser: resolveCurrentUser}
+      resolve: {user: resolveUser}
     });
   }
 
-  resolveCurrentUser.$inject = ['authService'];
+  resolveUser.$inject = ['authService'];
 
-  function resolveCurrentUser(authService) {
+  function resolveUser(authService) {
     return authService.firebaseAuthObject.$requireAuth();
   }
 
