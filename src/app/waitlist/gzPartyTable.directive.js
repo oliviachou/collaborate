@@ -23,7 +23,12 @@
   function PartyTableController(textMessageService) {
     var vm = this;
 
+    vm.removeParty = removeParty;
     vm.sendTextMessage = sendTextMessage;
+
+    function removeParty(party) {
+      vm.parties.$remove(party);
+    }
 
     function sendTextMessage(party) {
       textMessageService.sendTextMessage(party, vm.parties);
