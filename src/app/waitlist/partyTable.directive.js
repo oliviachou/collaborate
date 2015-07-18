@@ -7,7 +7,7 @@
 
   function gzPartyTable() {
     return {
-      templateUrl: 'app/waitList/gzPartyTable.html',
+      templateUrl: 'app/waitList/partyTable.html',
       restrict: 'E',
       controller: PartyTableController,
       controllerAs: 'vm',

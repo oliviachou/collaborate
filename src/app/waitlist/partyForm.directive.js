@@ -7,7 +7,7 @@
 
   function gzPartyForm() {
     return {
-      templateUrl: 'app/waitList/gzPartyForm.html',
+      templateUrl: 'app/waitList/partyForm.html',
       restrict: 'E',
       controller: PartyFormController,
       controllerAs: 'vm',
