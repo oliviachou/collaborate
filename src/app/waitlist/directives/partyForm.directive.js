@@ -7,7 +7,7 @@
 
   function gzPartyForm() {
     return {
-      templateUrl: 'app/waitList/components/partyForm.html',
+      templateUrl: 'app/waitList/directives/partyForm.html',
       restrict: 'E',
       controller: PartyFormController,
       controllerAs: 'vm',
