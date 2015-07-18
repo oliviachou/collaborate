@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.waitList')
+    .module('app.core')
     .factory('textMessageService', textMessageService);
 
   textMessageService.$inject = ['firebaseDataService'];
