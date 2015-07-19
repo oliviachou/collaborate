@@ -10,10 +10,10 @@
   function authService($rootScope, $firebaseAuth, firebaseDataService) {
     var firebaseAuthObject = $firebaseAuth(firebaseDataService.root);
 
-    $rootScope.currentUser = null;
+    var currentUser;
 
-    firebaseAuthObject.$onAuth(function(currentUser) {
-      $rootScope.currentUser = currentUser;
+    firebaseAuthObject.$onAuth(function(auth) {
+      currentUser = auth;
     });
 
     var service = {
@@ -21,6 +21,7 @@
       register: register,
       login: login,
       logout: logout,
+      isLoggedIn: isLoggedIn,
       sendWelcomeEmail: sendWelcomeEmail
     };
 
@@ -39,6 +40,10 @@
     function logout() {
       $rootScope.$broadcast('logout');
       firebaseAuthObject.$unauth();
+    }
+
+    function isLoggedIn() {
+      return currentUser;
     }
 
     function sendWelcomeEmail(emailAddress) {
