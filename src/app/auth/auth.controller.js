@@ -39,7 +39,7 @@
           return user;
         })
         .catch(function(error) {
-          console.log(error);
+          vm.error = error;
         });
     }
 
