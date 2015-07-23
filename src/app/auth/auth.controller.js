@@ -10,43 +10,34 @@
   function AuthController($location, authService) {
     var vm = this;
 
-    vm.user = {
-      email: '',
-      password: ''
-    };
     vm.register = register;
     vm.login = login;
-    vm.logout = logout;
 
 
-    function register() {
-      return authService.register(vm.user)
+    function register(user) {
+      return authService.register(user)
         .then(function() {
-          return vm.login();
+          return vm.login(user);
         })
         .then(function() {
-          return authService.sendWelcomeEmail(vm.user.email);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    }
-
-    function login() {
-      return authService.login(vm.user)
-        .then(function(user) {
-          $location.path('/waitlist');
-          return user;
+          return authService.sendWelcomeEmail(user.email);
         })
         .catch(function(error) {
           vm.error = error;
         });
     }
 
-    function logout() {
-      authService.logout();
-      $location.path('/');
+    function login(user) {
+      return authService.login(user)
+        .then(function(response) {
+          $location.path('/waitlist');
+          return response;
+        })
+        .catch(function(error) {
+          vm.error = error;
+        });
     }
+
   }
 
 })();
