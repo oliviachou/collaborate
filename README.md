@@ -12,9 +12,33 @@ reduces no shows, and creates happier customers that are more likely to come bac
 
 You can find a full working demo at http://www.waitandeat.com.
 
-## Style
+The app uses these technologies:
 
-This app will be a great resource if you want to learn the latest best practices for
+* AngularJS 1.4.x
+* Firebase 2.2.x
+* AngularFire 1.1.x
+* Bootstrap 3.3.x
+
+## Getting started
+
+The easiest way to get the code is to download is as a zip file. If you're familiar with Git and Github, you can also clone the repository.
+
+## Run the application
+
+You can use any server you like, but I prefer Python 2's built-in server for its simplicity. Navigate to the /app folder and enter:
+
+`python -m SimpleHTTPServer`
+
+Now browse to the app at `http://localhost:8000`.
+
+There are also installation videos for Mac and Windows users.
+
+*[Mac](https://watchandcode.com/courses/angular-course/lectures/162289)
+*[Windows](https://watchandcode.com/courses/angular-course/lectures/162288)
+
+## Style and structure
+
+This app is a great resource if you want to learn the latest best practices for
 AngularJS code style and application structure.
 
 That's because it follows [John Papa's AngularJS style guide](https://github.com/johnpapa/angular-styleguide),
@@ -41,22 +65,6 @@ By reading and experimenting with the code, you'll also learn how to:
 * Use `bindToController` in directives.
 * Use `transclusion` in directives.
 
-## Libraries used and versions
-
-* AngularJS 1.4.x
-* Firebase 2.2.x
-* AngularFire 1.1.x
-* Bootstrap 3.3.x
-
-## How the app works
-
-TODO
-
-## Running the code
-
-TODO
-
 ## Contact
 
-If you have any questions, just email me:
 gordon@watchandcode.com.
