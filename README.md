@@ -34,8 +34,8 @@ The easiest way to get the code is to download it as a zip file. If you're famil
 
 There are also setup videos for Mac and Windows users.
 
-*[Mac](https://watchandcode.com/courses/angular-course/lectures/162289)
-*[Windows](https://watchandcode.com/courses/angular-course/lectures/162288)
+* [Mac](https://watchandcode.com/courses/angular-course/lectures/162289)
+* [Windows](https://watchandcode.com/courses/angular-course/lectures/162288)
 
 
 
