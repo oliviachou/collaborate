@@ -21,11 +21,11 @@ The app uses these technologies:
 
 ## Getting started
 
-The easiest way to get the code is to download is as a zip file. If you're familiar with Git and Github, you can also clone the repository.
+The easiest way to get the code is to download it as a zip file. If you're familiar with Git and Github, you can also clone the repository.
 
 ## Run the application
 
-You can use any server you like, but I prefer Python 2's built-in server for its simplicity. Navigate to the /app folder and enter:
+You can use any server you like, but I prefer Python 2's built-in server for its simplicity. Navigate to the /src folder and enter:
 
 `python -m SimpleHTTPServer`
 
