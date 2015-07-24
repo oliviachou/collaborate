@@ -4,7 +4,7 @@ This is the most recent version of the demo app for [The Angular Course](https:/
 
 Wait and Eat replaces paper waiting lists at restaurants.
 
-If eat at restaurants a lot, you'll love the app because instead of waiting around
+If you eat at restaurants a lot, you'll love the app because instead of waiting around
 for your name to be called, you'll just get a text message when a table opens up.
 
 If you own a restaurant, you'll love the app because it makes managing waiting lists really easy,
