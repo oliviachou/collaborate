@@ -36,18 +36,25 @@ By reading and experimenting with the code, you'll also learn how to:
 * Safely inject dependencies that work after minification.
 * Use `promises` to get data from a server.
 * Use `resolve` in your routes to get data before your controllers run.
-* Use promises and also use promises that depend on other promises.
 * Use `controllerAs` view syntax instead of $scope.
 * Use `controllerAs` with `vm` instead of using `this`.
 * Use `bindToController` in directives.
 * Use `transclusion` in directives.
 
-## Libraries used
+## Libraries used and versions
 
 * AngularJS 1.4.x
 * Firebase 2.2.x
 * AngularFire 1.1.x
 * Bootstrap 3.3.x
+
+## How the app works
+
+TODO
+
+## Running the code
+
+TODO
 
 ## Contact
 
