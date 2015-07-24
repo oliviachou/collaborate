@@ -28,13 +28,13 @@ works with remote data, user authentication, and has all the major Angular featu
 * Controllers
 * Services
 * Directives
-* Promises
 
 By reading and experimenting with the code, you'll also learn how to:
 
 * Create separate modules for each feature.
 * Create controllers that use services for most of the work.
 * Safely inject dependencies that work after minification.
+* Use `promises` to get data from a server.
 * Use `resolve` in your routes to get data before your controllers run.
 * Use promises and also use promises that depend on other promises.
 * Use `controllerAs` view syntax instead of $scope.
