@@ -18,21 +18,17 @@
     }
   }
 
-  function PartyFormController() {
+  PartyFormController.$inject = ['partyService'];
+
+  function PartyFormController(partyService) {
     var vm = this;
 
-    vm.newParty = {
-      name: '',
-      phone: '',
-      size: '',
-      done: false,
-      notified: false
-    };
+    vm.newParty = new partyService.Party();
     vm.addParty = addParty;
 
     function addParty() {
       vm.parties.$add(vm.newParty);
-      vm.newParty = {};
+      vm.newParty = new partyService.Party();
     }
   }
 
