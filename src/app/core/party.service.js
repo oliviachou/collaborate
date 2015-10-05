@@ -19,7 +19,7 @@
     ////////////
 
     function getPartiesByUser(uid) {
-      return $firebaseArray(firebaseDataService.users.child(uid));
+      return $firebaseArray(firebaseDataService.users.child(uid).child('parties'));
     }
 
     function Party() {
