@@ -24,6 +24,6 @@
         <p ng-show="authForm.password.$error.required" class="text-danger">Password required</p>
     </div>
 
-    <input type="submit" ng-click="authForm.$valid && vm.submitAction({user: vm.user})" ng-value="vm.formTitle" class="btn btn-lg btn-primary btn-block"/>
+    <input type="submit" ng-click="authForm.$valid && vm.submitAction({user: vm.user})" ng-value="vm.formTitle" class="btn btn-lg btn-danger btn-block"/>
 
 </form>

@@ -1,5 +1,48 @@
-<!--Form for adding new parties.-->
-<gz-party-form parties="vm.parties"></gz-party-form>
 
-<!--Table for displaying parties.-->
-<gz-party-table parties="vm.parties"></gz-party-table>
+<!-- <gz-party-form parties="vm.parties"></gz-party-form>
+
+
+<gz-party-table parties="vm.parties"></gz-party-table> -->
+
+
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  </head>
+  <body>
+    <div id='messagesDiv'></div>
+    <input type='text' id='nameInput' placeholder='Name'>
+    <input type='text' id='messageInput' placeholder='Write something'>
+    <input type='text' id='imageInput' placeholder='link to image'>
+
+
+
+    <script>
+      var myDataRef = new Firebase('https://base2015-2.firebaseio.com/');
+      $('#imageInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#nameInput').val();
+          var text = $('#messageInput').val();
+          var url = $('#imageInput').val();
+          myDataRef.push({name: name,text:text, url: url});
+          $('#messageInput').val('');
+          $('#imageInput').val('');
+        }
+      });
+      myDataRef.on('child_added', function(snapshot) {
+        var message = snapshot.val();
+        displayChatMessage(message.name, message.text, message.url);
+      });
+      function displayChatMessage(name, text, url) {
+        console.log(url);
+        // debugger;
+        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+
+        $("#messagesDiv").append("<img src=\""+url+"\">");
+        $('#imageInput')[0].scrollTop = $('#imageInput')[0].scrollHeight;
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700);
+
+$radius : .5rem;
+
+nav.b {
+  font-family: "Source Code pro", monospace;
+  background: whitesmoke;
+  text-align: left;
+}
+
+h1.h {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.b {
+  position: relative;
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 10vh 1rem;
+}
+
+section.s {
+  color: #000;
+  text-align: left;
+  position: relative;
+  display: inline-block;
+  background: white;
+  padding: .75rem 1rem;
+  padding-right: 5rem;
+  font-size: 2em;
+  font-family: monospace;
+  border-radius: .5rem;
+  box-shadow: 0 .125rem lightgray;
+  overflow: hidden;
+}
+
+small {
+  display: block;
+  font-size: .8rem;
+  margin-top: 1em;
+  padding-bottom: .25rem;
+  transition: .3s;
+
+  section:hover & {
+    color: black;
+  }
+}
+
+[contenteditable] {
+  display: inline-block;
+  text-align: center;
+  min-width: 1em;
+  border: 0;
+  background: white;
+  border-radius: $radius;
+  transition: .3s;
+  vertical-align: -10%;
+  
+  span:hover & {
+    background: #ffa;
+  }
+  
+  &:focus,
+  section:hover &:focus {
+    outline: 0;
+    background: yellow;
+    padding: 0 .25em;
+  }
+}
+
+.bu {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background: lightgreen;
+  padding: .25em .5em;
+  border-top-right-radius: $radius;
+  box-shadow: inset 0 -.125rem rgba(0,0,0,.1);
+  transition: .4s;
+  transform-origin: top right;
+  
+  &:hover {
+    background: darken(lightgreen, 20%);
+    transition: .2s;
+  }
+  &:active {
+    transform: scale(1.1);
+    transition: 0;
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+
+svg.sv {
+  width: 100%;
+  margin-top: 1em;
+  transform-origin: 0 0;
+  background: darkgray;
+  border-radius: $radius;
+}
+
+.pa {
+  stroke: lightgray;
+  stroke-width: .25;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+pre.pre {
+  display: inline-block;
+  font-size: .9rem;
+  text-align: left;
+  background: rgba(128,128,128, .30);
+  margin-top: 1rem;
+  padding: 1.5rem 2rem;
+  border-radius: $radius;
+  box-shadow: inset 0 .125rem gainsboro;
+}

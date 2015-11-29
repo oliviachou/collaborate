@@ -1,6 +1,7 @@
 /* Starter template */
 
 body {
+    background: #2f3238;
     padding-top: 80px;
 }
 
@@ -54,5 +55,14 @@ body {
 }
 
 .form-signin input[type="submit"] {
+
     margin-top: 10px;
+}
+
+input.btn.btn-primary {
+  background:#d9534f;
+}
+
+input.btn.btn-primary:hover {
+  background: #c9302c;
 }
